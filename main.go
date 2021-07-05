@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"gods/linkedlist"
+	"gods/queue"
 	"gods/stack"
 )
 
@@ -76,5 +77,30 @@ func main() {
 	s.Display()
 	s.Pop()
 	s.Display()
+	Footer()
+
+	// Test Queue
+	Header("Queue")
+	q := queue.Queue{}
+	q.Enqueue(6)
+	q.Display()
+	q.Dequeue()
+	q.Display()
+	q.Enqueue(22)
+	q.Display()
+	q.Enqueue(48)
+	q.Display()
+	q.Enqueue(93)
+	q.Display()
+	q.Enqueue(62)
+	q.Display()
+	q.Dequeue()
+	q.Display()
+	q.Dequeue()
+	q.Display()
+	q.Dequeue()
+	q.Display()
+	q.Dequeue()
+	q.Display()
 	Footer()
 }
