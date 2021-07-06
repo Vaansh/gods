@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"gods/bst"
+	"gods/heap"
 	"gods/linkedlist"
 	"gods/queue"
 	"gods/stack"
@@ -97,6 +98,16 @@ func TestBST(t bst.Node) {
 	Footer()
 }
 
+func TestHeap(h heap.MinHeap, in []int) {
+	for i := 0; i < len(in); i++ {
+		h.Insert(in[i])
+	}
+	for i := 0; i < len(in); i++ {
+		fmt.Println(h.Remove())
+	}
+	Footer()
+}
+
 func Begin() {
 	fmt.Println("==============================")
 }
@@ -133,4 +144,10 @@ func main() {
 	Header("Binary Search Tree")
 	t := bst.Node{Key: 50}
 	TestBST(t)
+
+	// Test Heap
+	Header("MinHeap")
+	in := []int{34, 65, 7, 12, 80, 23}
+	min := heap.NewMinHeap(len(in))
+	TestHeap(*min, in)
 }
