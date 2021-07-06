@@ -3,31 +3,13 @@ package main
 import (
 	"fmt"
 
+	"gods/bst"
 	"gods/linkedlist"
 	"gods/queue"
 	"gods/stack"
 )
 
-func Begin() {
-	fmt.Println("==============================")
-}
-
-func Header(n string) {
-	fmt.Printf("%s Output", n)
-	fmt.Println("\n==============================")
-}
-
-func Footer() {
-	fmt.Println("==============================")
-}
-
-func main() {
-	// Begin
-	Begin()
-
-	// Test LinkedList
-	Header("LinkedList")
-	l := linkedlist.LinkedList{}
+func TestLinkedList(l linkedlist.LinkedList) {
 	l.Insert(12)
 	l.Insert(42)
 	l.Insert(56)
@@ -50,10 +32,9 @@ func main() {
 	l.Delete(56)
 	l.Delete(56)
 	Footer()
+}
 
-	// Test Stack
-	Header("Stack")
-	s := stack.Stack{}
+func TestStack(s stack.Stack) {
 	s.Push(23)
 	s.Display()
 	s.Push(15)
@@ -78,10 +59,9 @@ func main() {
 	s.Pop()
 	s.Display()
 	Footer()
+}
 
-	// Test Queue
-	Header("Queue")
-	q := queue.Queue{}
+func TestQueue(q queue.Queue) {
 	q.Enqueue(6)
 	q.Display()
 	q.Dequeue()
@@ -103,4 +83,54 @@ func main() {
 	q.Dequeue()
 	q.Display()
 	Footer()
+}
+
+func TestBST(t bst.Node) {
+	t.Insert(40)
+	t.Insert(60)
+	t.Insert(20)
+	t.Insert(30)
+	t.Insert(70)
+	t.Insert(90)
+	t.Insert(80)
+	t.Display()
+	Footer()
+}
+
+func Begin() {
+	fmt.Println("==============================")
+}
+
+func Header(n string) {
+	fmt.Printf("%s Output", n)
+	fmt.Println("\n==============================")
+}
+
+func Footer() {
+	fmt.Println("==============================")
+}
+
+func main() {
+	// Begin
+	Begin()
+
+	// Test LinkedList
+	Header("LinkedList")
+	l := linkedlist.LinkedList{}
+	TestLinkedList(l)
+
+	// Test Stack
+	Header("Stack")
+	s := stack.Stack{}
+	TestStack(s)
+
+	// Test Queue
+	Header("Queue")
+	q := queue.Queue{}
+	TestQueue(q)
+
+	// Test BST
+	Header("Binary Search Tree")
+	t := bst.Node{Key: 50}
+	TestBST(t)
 }
