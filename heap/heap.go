@@ -88,15 +88,3 @@ func (m *MinHeap) Left(i int) int {
 func (m *MinHeap) Right(i int) int {
 	return 2*i + 2
 }
-
-//func main() {
-//in := []int{6, 5, 3, 7, 2, 8}
-//min := NewMinHeap(len(in))
-//for i := 0; i < len(in); i++ {
-//min.Insert(in[i])
-//}
-//min.ConstructMinHeap()
-//for i := 0; i < len(in); i++ {
-//fmt.Println(min.Remove())
-//}
-//}
