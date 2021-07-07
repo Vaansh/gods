@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"gods/bst"
+	"gods/hashtable"
 	"gods/heap"
 	"gods/linkedlist"
 	"gods/queue"
@@ -108,6 +109,17 @@ func TestHeap(h heap.MinHeap, in []int) {
 	Footer()
 }
 
+func TestHashTable() {
+	table := make(map[int]*hashtable.Node, 15)
+	hash := hashtable.HashTable{Table: table, Size: 15}
+	fmt.Println("Number of spaces:", hash.Size)
+	for i := 0; i < 120; i++ {
+		hash.Insert(i)
+	}
+	hash.Display()
+	Footer()
+}
+
 func Begin() {
 	fmt.Println("==============================")
 }
@@ -150,4 +162,8 @@ func main() {
 	in := []int{34, 65, 7, 12, 80, 23}
 	min := heap.NewMinHeap(len(in))
 	TestHeap(*min, in)
+
+	// Test HashTable
+	Header("HashTable")
+	TestHashTable()
 }
