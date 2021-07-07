@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"gods/bst"
+	"gods/graph"
 	"gods/hashtable"
 	"gods/heap"
 	"gods/linkedlist"
@@ -143,6 +144,18 @@ func TestTrie() {
 	Footer()
 }
 
+func TestGraph() {
+	g := graph.Graph{}
+	for i := 0; i < 5; i++ {
+		g.AddVertex(i)
+	}
+	g.AddEdge(1, 2)
+	g.AddEdge(1, 2)
+	g.AddEdge(6, 2)
+	g.AddEdge(3, 2)
+	g.Display()
+}
+
 func Begin() {
 	fmt.Println("==============================")
 }
@@ -191,4 +204,8 @@ func main() {
 	// Test Trie
 	Header("Trie")
 	TestTrie()
+
+	// Test Graph
+	Header("Graph")
+	TestGraph()
 }
