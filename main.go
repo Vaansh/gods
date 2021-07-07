@@ -13,7 +13,9 @@ import (
 	"gods/trie"
 )
 
-func TestLinkedList(l linkedlist.LinkedList) {
+func TestLinkedList() {
+	Header("LinkedList")
+	l := linkedlist.LinkedList{}
 	l.Insert(12)
 	l.Insert(42)
 	l.Insert(56)
@@ -38,7 +40,9 @@ func TestLinkedList(l linkedlist.LinkedList) {
 	Footer()
 }
 
-func TestStack(s stack.Stack) {
+func TestStack() {
+	Header("Stack")
+	s := stack.Stack{}
 	s.Push(23)
 	s.Display()
 	s.Push(15)
@@ -65,7 +69,9 @@ func TestStack(s stack.Stack) {
 	Footer()
 }
 
-func TestQueue(q queue.Queue) {
+func TestQueue() {
+	Header("Queue")
+	q := queue.Queue{}
 	q.Enqueue(6)
 	q.Display()
 	q.Dequeue()
@@ -89,7 +95,9 @@ func TestQueue(q queue.Queue) {
 	Footer()
 }
 
-func TestBST(t bst.Node) {
+func TestBST() {
+	Header("Binary Search Tree")
+	t := bst.Node{Key: 50}
 	t.Insert(40)
 	t.Insert(60)
 	t.Insert(20)
@@ -102,6 +110,7 @@ func TestBST(t bst.Node) {
 }
 
 func TestHeap() {
+	Header("MinHeap")
 	in := []int{34, 65, 7, 12, 80, 23}
 	min := heap.NewMinHeap(len(in))
 	for i := 0; i < len(in); i++ {
@@ -114,6 +123,7 @@ func TestHeap() {
 }
 
 func TestHashTable() {
+	Header("HashTable")
 	table := make(map[int]*hashtable.Node, 10)
 	hash := hashtable.HashTable{Table: table, Size: 10}
 	fmt.Println("Number of spaces:", hash.Size)
@@ -125,6 +135,7 @@ func TestHashTable() {
 }
 
 func TestTrie() {
+	Header("Trie")
 	t := trie.NewTrie()
 	in := []string{
 		"aragorn",
@@ -145,6 +156,7 @@ func TestTrie() {
 }
 
 func TestGraph() {
+	Header("Graph")
 	g := graph.Graph{}
 	for i := 0; i < 5; i++ {
 		g.AddVertex(i)
@@ -174,38 +186,26 @@ func main() {
 	Begin()
 
 	// Test LinkedList
-	Header("LinkedList")
-	l := linkedlist.LinkedList{}
-	TestLinkedList(l)
+	TestLinkedList()
 
 	// Test Stack
-	Header("Stack")
-	s := stack.Stack{}
-	TestStack(s)
+	TestStack()
 
 	// Test Queue
-	Header("Queue")
-	q := queue.Queue{}
-	TestQueue(q)
+	TestQueue()
 
 	// Test BST
-	Header("Binary Search Tree")
-	t := bst.Node{Key: 50}
-	TestBST(t)
+	TestBST()
 
 	// Test Heap
-	Header("MinHeap")
 	TestHeap()
 
 	// Test HashTable
-	Header("HashTable")
 	TestHashTable()
 
 	// Test Trie
-	Header("Trie")
 	TestTrie()
 
 	// Test Graph
-	Header("Graph")
 	TestGraph()
 }
