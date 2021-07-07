@@ -9,6 +9,7 @@ import (
 	"gods/linkedlist"
 	"gods/queue"
 	"gods/stack"
+	"gods/trie"
 )
 
 func TestLinkedList(l linkedlist.LinkedList) {
@@ -99,24 +100,46 @@ func TestBST(t bst.Node) {
 	Footer()
 }
 
-func TestHeap(h heap.MinHeap, in []int) {
+func TestHeap() {
+	in := []int{34, 65, 7, 12, 80, 23}
+	min := heap.NewMinHeap(len(in))
 	for i := 0; i < len(in); i++ {
-		h.Insert(in[i])
+		min.Insert(in[i])
 	}
 	for i := 0; i < len(in); i++ {
-		fmt.Println(h.Remove())
+		fmt.Println(min.Remove())
 	}
 	Footer()
 }
 
 func TestHashTable() {
-	table := make(map[int]*hashtable.Node, 15)
-	hash := hashtable.HashTable{Table: table, Size: 15}
+	table := make(map[int]*hashtable.Node, 10)
+	hash := hashtable.HashTable{Table: table, Size: 10}
 	fmt.Println("Number of spaces:", hash.Size)
-	for i := 0; i < 120; i++ {
+	for i := 0; i < 60; i++ {
 		hash.Insert(i)
 	}
 	hash.Display()
+	Footer()
+}
+
+func TestTrie() {
+	t := trie.NewTrie()
+	in := []string{
+		"aragorn",
+		"aragon",
+		"argon",
+		"eragon",
+		"oregon",
+		"oregano",
+		"oreo",
+	}
+	for _, i := range in {
+		t.Insert(i)
+		fmt.Println("Entered", i)
+	}
+	fmt.Printf("Searching for 'argon': %t \n", t.Search("argon"))
+	fmt.Printf("Searching for 'wizard': %t \n", t.Search("wizard"))
 	Footer()
 }
 
@@ -159,11 +182,13 @@ func main() {
 
 	// Test Heap
 	Header("MinHeap")
-	in := []int{34, 65, 7, 12, 80, 23}
-	min := heap.NewMinHeap(len(in))
-	TestHeap(*min, in)
+	TestHeap()
 
 	// Test HashTable
 	Header("HashTable")
 	TestHashTable()
+
+	// Test Trie
+	Header("Trie")
+	TestTrie()
 }
